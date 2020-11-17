@@ -1,0 +1,89 @@
+= h1=
+=h1==
+===
+==h2==
+==&nbsp;==
+=={{template}}==
+==''italic''==
+===========no header
+==no header
+=no header=no header
+no header ==
+==
+=
+
+normal '''bold ''boldital'' bold'''
+''italics '''boldital''' italics''
+'''''boldital'''''
+''<nowiki>[[no link, italic]]</nowiki>{{template}}''
+'''''boldital<!--comment--><br /> &nbsp;'''''
+
+<br /><q>Quote</q><!--comment-->
+
+[nolink]
+[no_link://sd]
+'''[http://nolink.bold
+no bold]
+[mailto:bla@bla.de]
+[https://example.com  <!--comment-->''example.com'']
+[HTTPS://EXAMPLE.COM] trailing text
+[http://example.com a [[link]] a]
+[//example.com protocol-[relative link]
+<nowiki>[https://example.com]<nowiki></nowiki></nowiki>
+
+[[Wikilink|''italics '''boldital''' italics''
+__NOTOC__
+[http://noextlink-in-wikilink.com]
+ no pre
+==h2==
+]]wikilink end
+[[File:image.svg|thumb|<!--description--> <i>a</i>'''with''' [[link]] [http://link.org] inside.]]
+
+{{template <!-- skdjfh -->
+|parameter|key = [[link|value]]&nbsp;[https://example.com text] <nowiki><!-- --></nowiki>a=''ital''
+'''bold''' '''''bolditalic'''''|{{recursive|p|k=v<br />}}}}
+{{not
+a template}}
+{{
+	 
+template
+}}
+{{msg:xyz}} {{raw:xyz}} {{msgnw:xyz}} {{subst:xyz}} {{safesubst:xyz}} {{:xyz}}
+{{#dateformat:date}}
+{{NAMESPACE}}
+
+#*:;#; [[link]]''bold italic'' def <i>html</i> a&nbsp;a __NOTOC__ ~~~ <!--com--> [http://example.org] <nowiki>[[nolink]]</nowiki>a{{nbsp}}a
+
+ code [[link]] <i>HTML</i> <nowiki>[[no link]]</nowiki> '''bold''' [http://example.com]&nbsp;
+normal text
+    <nowiki>
+codeblock [[no link]]
+''no ital''
+__NOMAGIC__
+</nowiki>
+ <pre style="sdf">
+codeblock <!-- no comment --> [http://example.org no link]
+</pre>
+<syntaxhighlight style="" lang='c'style="">
+int main() {
+//comment
+}
+</syntaxhighlight>
+<math display="\nocmd">%no comment
+\cmd[option]{arg}
+$$no math$$</math>
+
+bla&amp;bla&#9;bla&#x00A9;bla
+__NOTOC__ ~~~~
+
+{|
+! style="text-align:left;"| ''ital''
+|-
+|&nbsp;<!-- comment --><i>a</i>''ital [[link]]''
+|[[link]]<nowiki>''no ital''</nowiki>
+|[[File:image.svg|thumb|<!--description--> <i>a</i>'''with''' [[link]] [http://example.org] inside.]]
+|-
+!Header
+|
+|[[http://example.org]]
+|}

@@ -1,0 +1,36 @@
+mediawiki.kak
+=============
+
+This script provides syntax highlighting for https://www.mediawiki.org[MediaWiki]
+markup in https://kakoune.org/[Kakoune]. MediaWiki is free wiki software used on
+Wikipedia and Fandom among others.
+
+image::screenshot.png[]
+
+Installation
+------------
+
+Download mediawiki.kak and `source` it or put it in your
+https://github.com/mawww/kakoune/wiki/Installing-Plugins[autoload] directory,
+where it will be sourced automatically.
+
+Arch Linux users can install the
+https://aur.archlinux.org/packages/kak-mediawiki-git/[kak-mediawiki-git]
+AUR package.
+
+Usage
+-----
+
+```
+set buffer filetype mediawiki
+```
+
+If you do not want to run the above command each time you open a MediaWiki file,
+put the following in your `kakrc` and add the `.wiki` extension to your
+filenames:
+
+```
+hook global BufCreate .*\.wiki %{
+    set-option buffer filetype mediawiki
+}
+```
