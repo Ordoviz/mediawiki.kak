@@ -47,6 +47,7 @@ evaluate-commands %sh{
 
 addhl shared/mediawiki/deflist      region '^[#*:;]*;' $ group
 addhl shared/mediawiki/deflist/bold regex  '^[#*:]*;(.+)' 1:+b
+addhl shared/mediawiki/deflist/bullet regex '^[#*:;]+' 0:bullet
 
 addhl shared/mediawiki/boldital  region "'''''"  "('''''|$)" group
 addhl shared/mediawiki/bold      region "'''"      "('''|$)" group
@@ -130,7 +131,7 @@ evaluate-commands %sh¶
         [ "$region" != extlink  ] && printf "addhl shared/mediawiki/%s/r/extlink region (?<!\[)\[([a-zA-Z0-9.-]+:|//)[^\\\n]+?(?=\]) \] ref mediawiki/extlink\n" "$region"
     done
 
-    for region in default deflist parameter template table; do
+    for region in default parameter template table; do
         printf "addhl shared/mediawiki/%s/bullet regex '^[#*:;]+' 0:bullet\n" "$region"
         printf "addhl shared/mediawiki/%s/pre    regex '^ ' 0:default,rgb:666666\n" "$region"
         # whitespace is allowed before table start
