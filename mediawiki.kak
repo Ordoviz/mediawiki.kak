@@ -80,9 +80,9 @@ addhl shared/mediawiki/extlink/link regex '\[([^ \]]+).*?\]' 1:link
 addhl shared/mediawiki/extlink/brackets regex (\[).*?(\]) 1:+ab@link  2:+ab@link
 
 # parameter in a template, e.g. {{{name|default}}}
-addhl shared/mediawiki/parameter region \{\{\{  \}\}\} group
+addhl shared/mediawiki/parameter region -recurse \{\{\{ \{\{\{  \}\}\} group
 addhl shared/mediawiki/parameter/ fill attribute
-addhl shared/mediawiki/parameter/name regex \{\{\{(.*?)(\|.*?)?\}\}\} 1:+b
+addhl shared/mediawiki/parameter/name regex \{\{\{(.*?)(\||\}\}\}) 1:+b
 
 # template, e.g. {{template|argument|key=value}}
 addhl shared/mediawiki/template region -recurse \{\{ \{\{ \}\} group
@@ -109,7 +109,7 @@ addhl shared/mediawiki/h1/ fill title
 
 # Allow some highlighting in certain regions
 evaluate-commands %sh¶
-    all='deflist boldital bold italics h1 h2 h3 h4 h5 h6 wikilink extlink template table'
+    all='deflist boldital bold italics h1 h2 h3 h4 h5 h6 wikilink extlink template table parameter'
 
     for region in default $all; do
         # See https://en.wikipedia.org/wiki/HTML_entity
@@ -124,17 +124,18 @@ evaluate-commands %sh¶
         printf "addhl shared/mediawiki/%s/r/verbatim region -match-capture <(nowiki|pre).*?> </(nowiki|pre)> ref mediawiki/verbatim\n" "$region"
 
         # prevent recursion
+        [ "$region" != parameter ] && printf "addhl shared/mediawiki/%s/r/parameter region -recurse \{\{\{ \{\{\{  \}\}\} ref mediawiki/parameter\n" "$region"
         [ "$region" != template ] && printf "addhl shared/mediawiki/%s/r/template region -recurse \{\{ \{\{ \}\} ref mediawiki/template\n" "$region"
         [ "$region" != wikilink ] && printf "addhl shared/mediawiki/%s/r/wikilink region -recurse \[\[ \[\[ \]\] ref mediawiki/wikilink\n" "$region"
         [ "$region" != extlink  ] && printf "addhl shared/mediawiki/%s/r/extlink region (?<!\[)\[([a-zA-Z0-9.-]+:|//)[^\\\n]+?(?=\]) \] ref mediawiki/extlink\n" "$region"
     done
 
-    for region in default deflist template table; do
+    for region in default deflist parameter template table; do
         printf "addhl shared/mediawiki/%s/bullet regex '^[#*:;]+' 0:bullet\n" "$region"
         printf "addhl shared/mediawiki/%s/pre    regex '^ ' 0:default,rgb:666666\n" "$region"
     done
 
-    for region in template table; do
+    for region in parameter template table; do
         printf "addhl shared/mediawiki/%s/r/deflist region '^[#*:]*;' $ ref mediawiki/deflist\n" "$region"
     done
 
@@ -144,7 +145,7 @@ evaluate-commands %sh¶
         printf "addhl shared/mediawiki/%s/r/italics  region \"''\" \"(?<!')''(?!')\" ref mediawiki/italics\n" "$region"
     done
 
-    for region in wikilink table; do
+    for region in parameter wikilink table; do
         printf "addhl shared/mediawiki/%s/r/h6 region ^={6}[^\\\n]+?(?=======\\\n) (={6}$|$) ref mediawiki/h6\n" "$region"
         printf "addhl shared/mediawiki/%s/r/h5 region ^={5}[^\\\n]+?(?======\\\n)  (={5}$|$) ref mediawiki/h5\n" "$region"
         printf "addhl shared/mediawiki/%s/r/h4 region ^={4}[^\\\n]+?(?=====\\\n)   (={4}$|$) ref mediawiki/h4\n" "$region"
@@ -153,7 +154,6 @@ evaluate-commands %sh¶
         printf "addhl shared/mediawiki/%s/r/h1 region ^=[^\\\n]+?(?==\\\n)            (=$|$) ref mediawiki/h1\n" "$region"
     done
 ¶
-addhl shared/mediawiki/template/r/ region \{\{\{  \}\}\} ref mediawiki/parameter
 
 # Commands
 # ‾‾‾‾‾‾‾‾
