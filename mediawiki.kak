@@ -115,7 +115,7 @@ evaluate-commands %sh¶
     for region in default $all; do
         # See https://en.wikipedia.org/wiki/HTML_entity
         printf "addhl shared/mediawiki/%s/entity regex '&(#[0-9]{1,4}|#x[0-9a-fA-F]{1,4}|[a-zA-Z]+);' 0:string\n" "$region"
-        printf "addhl shared/mediawiki/%s/tag    regex </?([a-zA-Z]+).*?> 0:string 1:+b\n" "$region"
+        printf "addhl shared/mediawiki/%s/tag    regex </?([\w-]+).*?> 0:string 1:+b\n" "$region"
         printf "addhl shared/mediawiki/%s/magic  regex __[A-Z]{3,}__|~~~~? 0:keyword\n" "$region"
     done
 
