@@ -90,9 +90,9 @@ addhl shared/mediawiki/template/ fill value
 addhl shared/mediawiki/template/name regex (?<!\{)\{\{(?!\{)\s*(((msg|raw|msgnw|(safe)?subst||):)?[^\n]*?)\n*[:|\}] 1:+bu
 addhl shared/mediawiki/template/key  regex \|\s*\w+\h*= 0:+b
 
-addhl shared/mediawiki/table region \{\| \|\} group
+addhl shared/mediawiki/table region ^\h*\{\| ^\h*\|\} group
 addhl shared/mediawiki/table/ fill type
-addhl shared/mediawiki/table/theader regex ^!.*?$ 0:+b
+addhl shared/mediawiki/table/theader regex ^\h*!.*?$ 0:+b
 
 addhl shared/mediawiki/h6 region ^={6}[^\n]+?(?=======\n) (={6}$|$) group
 addhl shared/mediawiki/h6/ fill header
