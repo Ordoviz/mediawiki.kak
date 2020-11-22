@@ -40,7 +40,7 @@ __NOTOC__
 [[File:image.svg|thumb|<!--description--> <i>a</i>'''with''' [[link]] [http://link.org] inside.]]
 
 {{template <!-- skdjfh -->
-|parameter|key = [[link|value]]&nbsp;[https://example.com text] <nowiki><!-- --></nowiki>a=''ital''
+ |parameter|key = [[link|value]]&nbsp;[https://example.com text] <nowiki><!-- --></nowiki>a=''ital''
 '''bold''' '''''bolditalic'''''|{{recursive|p|k=v<br />}}}}
 {{not
 a template}}
