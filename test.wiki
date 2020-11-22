@@ -77,7 +77,7 @@ bla&amp;bla&#9;bla&#x00A9;bla
 __NOTOC__ ~~~~
 
   	{|
-! style="text-align:left;"| ''ital''
+ ! style="text-align:left;"| ''ital''
 |-
 |&nbsp;<!-- comment --><i>a</i>''ital [[link]]''
   |[[link]]<nowiki>''no ital''</nowiki>

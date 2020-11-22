@@ -133,9 +133,13 @@ evaluate-commands %sh¶
     for region in default deflist parameter template table; do
         printf "addhl shared/mediawiki/%s/bullet regex '^[#*:;]+' 0:bullet\n" "$region"
         printf "addhl shared/mediawiki/%s/pre    regex '^ ' 0:default,rgb:666666\n" "$region"
+        # whitespace is allowed before table start
+        printf "addhl shared/mediawiki/%s/notpre regex '^\h*\{\|' 0:+g\n" "$region"
     done
 
     for region in parameter template table; do
+        # whitespace is allowed before table marks and parameter seperator
+        printf "addhl shared/mediawiki/%s/notpre2 regex '^\h*[|!]' 0:+g\n" "$region"
         printf "addhl shared/mediawiki/%s/r/deflist region '^[#*:]*;' $ ref mediawiki/deflist\n" "$region"
     done
 
