@@ -89,7 +89,7 @@ addhl shared/mediawiki/parameter/name regex \{\{\{(.*?)(\||\}\}\}) 1:+b
 addhl shared/mediawiki/template region -recurse \{\{ \{\{ \}\} group
 addhl shared/mediawiki/template/ fill value
 addhl shared/mediawiki/template/name regex (?<!\{)\{\{(?!\{)\s*(((msg|raw|msgnw|(safe)?subst||):)?[^\n]*?)\s*[:|\}] 1:+bu
-addhl shared/mediawiki/template/key  regex \|\s*\w+\h*= 0:+b
+addhl shared/mediawiki/template/key  regex '\|\s*[\w- ]+\h*=' 0:+b
 
 addhl shared/mediawiki/table region ^\h*\{\| ^\h*\|\} group
 addhl shared/mediawiki/table/ fill type
