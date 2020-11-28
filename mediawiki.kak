@@ -60,7 +60,7 @@ addhl shared/mediawiki/italics/bold regex "..('''[^\n]*?''').." 1:+b
 
 addhl shared/mediawiki/comment  region <!-- --> fill comment
 
-addhl shared/mediawiki/verbatim region -match-capture <(nowiki|pre).*?> </(nowiki|pre)> group
+addhl shared/mediawiki/verbatim region -match-capture <(nowiki|pre)[^/]*?> </(nowiki|pre)> group
 addhl shared/mediawiki/verbatim/tags regex (<(nowiki|pre).*?>).*(</(nowiki|pre)>) 1:string 2:+b 3:string 4:+b
 
 # See https://en.wikipedia.org/wiki/WP:MATH
@@ -122,7 +122,7 @@ evaluate-commands %sh¶
     for region in $all; do
         printf "addhl shared/mediawiki/%s/r regions\n" "$region"
         printf "addhl shared/mediawiki/%s/r/comment  region <!-- --> fill comment\n" "$region"
-        printf "addhl shared/mediawiki/%s/r/verbatim region -match-capture <(nowiki|pre).*?> </(nowiki|pre)> ref mediawiki/verbatim\n" "$region"
+        printf "addhl shared/mediawiki/%s/r/verbatim region -match-capture <(nowiki|pre)[^/]*?> </(nowiki|pre)> ref mediawiki/verbatim\n" "$region"
 
         # prevent recursion
         [ "$region" != parameter ] && printf "addhl shared/mediawiki/%s/r/parameter region -recurse \{\{\{ \{\{\{  \}\}\} ref mediawiki/parameter\n" "$region"
