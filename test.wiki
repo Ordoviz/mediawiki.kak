@@ -18,6 +18,7 @@ normal '''bold ''boldital'' bold'''
 ''<nowiki>[[no link, italic]]</nowiki>{{template}}''
 '''''boldital<!--comment--><br /> &nbsp;'''''
 
+<1s no HTML tag
 <br /><q>Quote</q><!--comment-->
 
 [nolink]
