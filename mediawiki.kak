@@ -64,10 +64,10 @@ addhl shared/mediawiki/verbatim region -match-capture <(nowiki|pre)[^/]*?> </(no
 addhl shared/mediawiki/verbatim/tags regex (<(nowiki|pre).*?>).*(</(nowiki|pre)>) 1:string 2:+b 3:string 4:+b
 
 # See https://en.wikipedia.org/wiki/WP:MATH
-addhl shared/mediawiki/math region -match-capture '<(math( chem)?|chem).*?>' '</(math( chem)?|chem)>' group
+addhl shared/mediawiki/math region -match-capture '<(math|chem).*?>' '</(math|chem)>' group
 addhl shared/mediawiki/math/macro regex '\\[a-zA-Z0-9]+\b' 0:keyword
 addhl shared/mediawiki/math/option regex '\\[a-zA-Z0-9]+\b\[([^\]]+)\]' 1:value
-addhl shared/mediawiki/math/tags regex '(<(math( chem)?|chem).*?>).*(</(math( chem)?|chem)>)' 1:string 2:+b 4:string 5:+b
+addhl shared/mediawiki/math/tags regex '(<(math|chem).*?>).*(</(math|chem)>)' 1:string 2:+b 3:string 4:+b
 
 # wikilink, e.g. [[Article|display text]] or [[File:logo.svg|thumb|description]]
 addhl shared/mediawiki/wikilink region -recurse \[\[ \[\[ \]\] group
